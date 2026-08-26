@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phone Link — Privacy Policy</title>
+<style>
+  :root { color-scheme: light dark; }
+  body {
+    margin: 0 auto; padding: 2rem 1.25rem; max-width: 42rem;
+    font: 16px/1.6 -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  h1 { font-size: 1.6rem; margin-bottom: .25rem; }
+  h2 { font-size: 1.15rem; margin-top: 2rem; }
+  .lead { color: #666; margin-top: 0; }
+  ol, ul { padding-left: 1.25rem; }
+  code { background: rgba(128,128,128,.15); padding: .1rem .35rem; border-radius: 4px; }
+  table { border-collapse: collapse; width: 100%; margin-top: .5rem; }
+  th, td { text-align: left; padding: .5rem .6rem; border-bottom: 1px solid rgba(128,128,128,.3); vertical-align: top; }
+  footer { margin-top: 2.5rem; color: #666; font-size: .9rem; }
+</style>
+</head>
+<body>
+
+<h1>Privacy Policy</h1>
+<p class="lead">
+  Phone Link — <code>com.LabNexus.phonelink</code><br>
+  Last updated: 27 August 2026
+</p>
+
+<p>
+  Phone Link is a dialer that can relay calls between two of your own Android
+  phones. This policy explains what the app collects, what it deliberately does
+  not, and how to delete what it holds.
+</p>
+
+<h2>What we collect</h2>
+<p>
+  Only what an account needs. Signing in is optional — the dialer works without
+  it — and is required only for the SIM relay feature.
+</p>
+<table>
+  <tr><th>Data</th><th>Why</th><th>Shared?</th></tr>
+  <tr>
+    <td><strong>Email address</strong> of the Google account you sign in with</td>
+    <td>Identifies your account and determines which Bluetooth headsets are authorized for it</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td><strong>Account identifier</strong> created when you first sign in</td>
+    <td>Identifies your account on our server</td>
+    <td>No</td>
+  </tr>
+</table>
+<p>
+  That is the complete list. There is no analytics, no advertising, no
+  advertising ID, and no tracking of any kind in this app.
+</p>
+
+<h2>What stays on your phone</h2>
+<p>
+  Phone Link uses several sensitive permissions. The data behind them is used on
+  the device and is <strong>never uploaded to us or to anyone else</strong>:
+</p>
+<table>
+  <tr><th>Data</th><th>Used for</th></tr>
+  <tr><td>Call log</td><td>Showing recent calls, and recording calls made through the paired phone so your history is complete</td></tr>
+  <tr><td>Contacts</td><td>Showing the caller's name instead of a bare number</td></tr>
+  <tr><td>Phone numbers and SIM details</td><td>Choosing which SIM places a call</td></tr>
+  <tr><td>Microphone audio</td><td>Relaying live call audio between your two phones. It is never recorded, stored or transmitted to a server</td></tr>
+  <tr><td>Bluetooth device addresses</td><td>Checking whether a connected headset is authorized for your account</td></tr>
+  <tr><td>Approximate location permission (Android 11 and older only)</td><td>Required by those Android versions to scan for Bluetooth devices. Your location is never read, used or collected</td></tr>
+</table>
+
+<h2>Data shared between your two phones</h2>
+<p>
+  When you pair two phones, each sends the other a short identifier derived from
+  your account so that only devices signed into the same account will link. This
+  travels directly between your phones over Bluetooth and does not pass through
+  us.
+</p>
+
+<h2>Who processes your data</h2>
+<ul>
+  <li><strong>Google</strong> — handles the sign-in itself. We receive your
+      email address from it; we never see your Google password.</li>
+  <li><strong>Supabase</strong> — hosts the database holding your email address,
+      account identifier, and the list of headsets authorized for your account.</li>
+</ul>
+<p>
+  These are service providers acting on our behalf. We do not sell your data or
+  share it with third parties for their own purposes.
+</p>
+
+<h2>Security and retention</h2>
+<p>
+  All traffic between the app and our server is encrypted in transit using
+  HTTPS. Sign-in tokens are stored in the app's private storage on your phone and
+  are excluded from cloud backup and device transfer.
+</p>
+<p>
+  Your account is kept until you delete it. Deleting it removes the data
+  immediately.
+</p>
+
+<h2>Deleting your data</h2>
+<p>
+  In the app: <strong>Settings → Relay Identity → Delete account</strong>. Or see
+  <a href="account-deletion.html">the account deletion page</a>, which also
+  covers requesting deletion by email if you no longer have the app installed.
+</p>
+<p>
+  Signing out clears the session on that phone but keeps your account. Deleting
+  the account removes your email address, your account identifier, and the list
+  of headsets authorized for it.
+</p>
+
+<h2>Children</h2>
+<p>
+  Phone Link is not directed at children and is intended for users aged 18 and
+  over. We do not knowingly collect data from children.
+</p>
+
+<h2>Changes</h2>
+<p>
+  If this policy changes, the date at the top will be updated. Material changes
+  will be noted in the app's release notes.
+</p>
+
+<h2>Contact</h2>
+<p>
+  Questions about this policy or your data: <strong>ahmad@mrecai.com</strong>
+</p>
+
+<footer>
+  Phone Link · com.LabNexus.phonelink
+</footer>
+
+</body>
+</html>
