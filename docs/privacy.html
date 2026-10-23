@@ -25,7 +25,8 @@
 <h1>Privacy Policy</h1>
 <p class="lead">
   Phone Link — <code>com.LabNexus.phonelink</code><br>
-  Last updated: 27 August 2026
+  Phone Link Messages � <code>com.LabNexus.phonelink.companion</code><br>
+  Last updated: 23 October 2026
 </p>
 
 <p>
@@ -43,7 +44,7 @@
   <tr><th>Data</th><th>Why</th><th>Shared?</th></tr>
   <tr>
     <td><strong>Email address</strong> of the Google account you sign in with</td>
-    <td>Identifies your account and determines which Bluetooth headsets are authorized for it</td>
+    <td>Identifies your account; determines which Bluetooth headsets are authorized for it and whether it may use the SIM relay at all</td>
     <td>No</td>
   </tr>
   <tr>
@@ -51,10 +52,63 @@
     <td>Identifies your account on our server</td>
     <td>No</td>
   </tr>
+  <tr>
+    <td><strong>Your relay access</strong> — the plan on the account (for example lifetime, yearly, monthly, or a trial), its expiry date if it has one, and how many trial calls it has used</td>
+    <td>Deciding whether relayed call audio is carried, and how much of a trial is left. It is set by us, never by the app</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td><strong>A log of relayed calls</strong> — when a relayed call happened, an identifier generated on your phone for that call, and whether it counted against a trial allowance</td>
+    <td>Billing and support: it is how the number of trial calls used is worked out, and how "why did my trial run out" can be answered. It deliberately contains <strong>no phone numbers</strong> and nothing about the other party</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td><strong>Whether a device check passed</strong> — when the app last asked Google whether it is a genuine copy on a trustworthy device, and the one-word answer, such as <code>ok</code> or <code>device failed</code></td>
+    <td>Only used if this check has been switched on for your account. It exists to keep modified copies of the app from using the relay, and it is what lets us tell a customer whose phone cannot pass the check apart from one who is not passing it on purpose</td>
+    <td>No</td>
+  </tr>
 </table>
 <p>
   That is the complete list. There is no analytics, no advertising, no
   advertising ID, and no tracking of any kind in this app.
+</p>
+<p>
+  A relayed call is logged once it has been connected for a few seconds. Calls
+  that are missed, declined or never connect are not relayed and are not logged.
+  Calls you place on your own phone's SIM are not relayed and are not logged
+  either.
+</p>
+
+<h2>Phone Link Messages (companion app)</h2>
+<p>
+  Phone Link Messages (<code>com.LabNexus.phonelink.companion</code>) is the
+  companion app that shows SMS from one phone on another. It has no account of
+  its own and relays through Phone Link.
+</p>
+<table>
+  <tr><th>Data</th><th>Why</th><th>Where it goes</th></tr>
+  <tr>
+    <td><strong>SMS messages</strong> · incoming messages, your message history, and the replies you type</td>
+    <td>Showing your threads and sending your replies on the other phone</td>
+    <td>Only to your other paired phone, over an encrypted Bluetooth link. The developer does not receive them</td>
+  </tr>
+  <tr>
+    <td><strong>Contacts</strong> (optional)</td>
+    <td>Showing a name and photo instead of a bare number</td>
+    <td>On this device only</td>
+  </tr>
+</table>
+<p>
+  Messages are encrypted end-to-end between your two phones with a key derived
+  from your account, so they are unreadable by the developer. They are stored on
+  each phone's encrypted local storage and are deleted when the app is uninstalled.
+  Phone Link Messages sends no messages, phone numbers or contacts to our servers.
+</p>
+<p>
+  The companion requests SMS access only after showing an in-app explanation and
+  asking for your consent. You can deny it; the app then cannot read or send
+  messages. Your existing SMS app keeps working, because Phone Link Messages is
+  not your default SMS app.
 </p>
 
 <h2>What stays on your phone</h2>
@@ -75,9 +129,10 @@
 <h2>Data shared between your two phones</h2>
 <p>
   When you pair two phones, each sends the other a short identifier derived from
-  your account so that only devices signed into the same account will link. This
-  travels directly between your phones over Bluetooth and does not pass through
-  us.
+  your account so that only devices signed into the same account will link, plus
+  the call and message data you choose to relay. All of it travels directly
+  between your phones over Bluetooth and does not pass through us. Relayed
+  messages are encrypted end-to-end.
 </p>
 
 <h2>Who processes your data</h2>
@@ -85,7 +140,20 @@
   <li><strong>Google</strong> — handles the sign-in itself. We receive your
       email address from it; we never see your Google password.</li>
   <li><strong>Supabase</strong> — hosts the database holding your email address,
-      account identifier, and the list of headsets authorized for your account.</li>
+      account identifier, your relay access, the log of relayed calls, and the
+      list of headsets authorized for your account.</li>
+  <li><strong>Phone Link Messages</strong> � the companion app holds the SMS
+      permissions and relays messages through Phone Link. It has no account of
+      its own; the pairing and account are handled by Phone Link.</li>
+  <li><strong>Phone Link Messages</strong> · the companion app holds the SMS
+      permissions and relays messages through Phone Link. It has no account of
+      its own; the pairing and account are handled by Phone Link.</li>
+  <li><strong>Google Play Integrity</strong> — when relay audio is switched on and
+      this check is enabled for your account, the app asks Google, through our
+      server, whether the app on your phone is the copy Google published and
+      whether the device is in a trustworthy state. Google receives the identity of
+      the app and returns a yes/no verdict. It never receives your calls, your
+      phone numbers or your messages.</li>
 </ul>
 <p>
   These are service providers acting on our behalf. We do not sell your data or
@@ -96,7 +164,9 @@
 <p>
   All traffic between the app and our server is encrypted in transit using
   HTTPS. Sign-in tokens are stored in the app's private storage on your phone and
-  are excluded from cloud backup and device transfer.
+  are excluded from cloud backup and device transfer. Messages relayed by Phone
+  Link Messages are encrypted end-to-end between your two phones and are never
+  stored on a server.
 </p>
 <p>
   Your account is kept until you delete it. Deleting it removes the data
@@ -110,9 +180,11 @@
   covers requesting deletion by email if you no longer have the app installed.
 </p>
 <p>
-  Signing out clears the session on that phone but keeps your account. Deleting
-  the account removes your email address, your account identifier, and the list
-  of headsets authorized for it.
+  Phone Link Messages has no account. Uninstalling it deletes the messages
+  stored on that phone. Signing out clears the session on that phone but keeps
+  your account. Deleting the account removes your email address, your account
+  identifier, your relay access, the log of relayed calls, and the list of
+  headsets authorized for it.
 </p>
 
 <h2>Children</h2>
@@ -133,7 +205,8 @@
 </p>
 
 <footer>
-  Phone Link · com.LabNexus.phonelink
+  Phone Link · com.LabNexus.phonelink<br>
+  Phone Link Messages · com.LabNexus.phonelink.companion
 </footer>
 
 </body>
