@@ -26,7 +26,7 @@
 <p class="lead">
   Phone Link — <code>com.LabNexus.phonelink</code><br>
   Phone Link Messages � <code>com.LabNexus.phonelink.companion</code><br>
-  Last updated: 23 October 2026
+  Last updated: 28 October 2026
 </p>
 
 <p>
@@ -63,6 +63,11 @@
     <td>No</td>
   </tr>
   <tr>
+    <td><strong>Failed-call diagnostics</strong> when a relayed call does not carry audio: app version, Android version, device model, the relay/Bluetooth state, and the app's own diagnostic log</td>
+    <td>Diagnosing and fixing relay failures. It is uploaded automatically only for a failed relayed call. Contact numbers are replaced with <code>[redacted]</code> before the log is written or uploaded; there is no call audio, no contacts, and no message content</td>
+    <td>No</td>
+  </tr>
+  <tr>
     <td><strong>Whether a device check passed</strong> — when the app last asked Google whether it is a genuine copy on a trustworthy device, and the one-word answer, such as <code>ok</code> or <code>device failed</code></td>
     <td>Only used if this check has been switched on for your account. It exists to keep modified copies of the app from using the relay, and it is what lets us tell a customer whose phone cannot pass the check apart from one who is not passing it on purpose</td>
     <td>No</td>
@@ -77,6 +82,14 @@
   that are missed, declined or never connect are not relayed and are not logged.
   Calls you place on your own phone's SIM are not relayed and are not logged
   either.
+</p>
+<p>
+  If a relayed call fails to carry your voice or the other side's voice, the app
+  uploads its own diagnostic log for that call. It contains the app build,
+  Android version, device model, relay and Bluetooth state, and the app's log.
+  Contact numbers are replaced with <code>[redacted]</code> before the log is
+  written or uploaded. It contains no call audio, no contacts, and no message
+  content, and it is not used for advertising or analytics.
 </p>
 
 <h2>Phone Link Messages (companion app)</h2>
@@ -140,8 +153,9 @@
   <li><strong>Google</strong> — handles the sign-in itself. We receive your
       email address from it; we never see your Google password.</li>
   <li><strong>Supabase</strong> — hosts the database holding your email address,
-      account identifier, your relay access, the log of relayed calls, and the
-      list of headsets authorized for your account.</li>
+      account identifier, your relay access, the log of relayed calls,
+      failed-call diagnostics, and the list of headsets authorized for your
+      account.</li>
   <li><strong>Phone Link Messages</strong> � the companion app holds the SMS
       permissions and relays messages through Phone Link. It has no account of
       its own; the pairing and account are handled by Phone Link.</li>
@@ -169,6 +183,11 @@
   stored on a server.
 </p>
 <p>
+  Failed-call diagnostics are stored in Supabase and are kept only for support,
+  until you delete your account. Contact numbers are redacted before upload, and
+  the diagnostic log contains no call audio, contacts, or message content.
+</p>
+<p>
   Your account is kept until you delete it. Deleting it removes the data
   immediately.
 </p>
@@ -183,8 +202,8 @@
   Phone Link Messages has no account. Uninstalling it deletes the messages
   stored on that phone. Signing out clears the session on that phone but keeps
   your account. Deleting the account removes your email address, your account
-  identifier, your relay access, the log of relayed calls, and the list of
-  headsets authorized for it.
+  identifier, your relay access, the log of relayed calls, failed-call
+  diagnostics, and the list of headsets authorized for it.
 </p>
 
 <h2>Children</h2>
