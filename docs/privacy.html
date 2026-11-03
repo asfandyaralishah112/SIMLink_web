@@ -63,8 +63,8 @@
     <td>No</td>
   </tr>
   <tr>
-    <td><strong>Failed-call diagnostics</strong> when a relayed call does not carry audio: app version, Android version, device model, the relay/Bluetooth state, and the app's own diagnostic log</td>
-    <td>Diagnosing and fixing relay failures. It is uploaded automatically only for a failed relayed call. Contact numbers are replaced with <code>[redacted]</code> before the log is written or uploaded; there is no call audio, no contacts, and no message content</td>
+    <td><strong>Call diagnostics</strong> when a relayed call runs: app version, Android version, device model, your plan and trial state, permissions, default-dialer and battery-optimisation state, call volume, the relay/Bluetooth state, and the app's own diagnostic log from <strong>both phones</strong> in the relay pair</td>
+    <td>Diagnosing and fixing relay failures. On a trial account it is uploaded for every relayed call, so a problem can be found before the trial ends; on a paid plan only for a call that recorded a failure. Contact numbers are replaced with <code>[redacted]</code> before the log is written or uploaded; there is no call audio, no contacts, and no message content</td>
     <td>No</td>
   </tr>
   <tr>
@@ -84,12 +84,15 @@
   either.
 </p>
 <p>
-  If a relayed call fails to carry your voice or the other side's voice, the app
-  uploads its own diagnostic log for that call. It contains the app build,
-  Android version, device model, relay and Bluetooth state, and the app's log.
-  Contact numbers are replaced with <code>[redacted]</code> before the log is
-  written or uploaded. It contains no call audio, no contacts, and no message
-  content, and it is not used for advertising or analytics.
+  Every relayed call on a trial account uploads a diagnostic log; on a paid plan
+  only a call that recorded a failure does. Both phones in the pair contribute
+  their own log for that call, so a routing or audio problem can be seen from
+  both ends. The log contains the app build, Android version, device model,
+  permissions, default-dialer and battery state, call volume, relay and
+  Bluetooth state, and the app's own log. Contact numbers are replaced with
+  <code>[redacted]</code> before the log is written or uploaded. It contains no
+  call audio, no contacts, and no message content, and it is not used for
+  advertising or analytics.
 </p>
 
 <h2>Phone Link Messages (companion app)</h2>
@@ -154,7 +157,7 @@
       email address from it; we never see your Google password.</li>
   <li><strong>Supabase</strong> — hosts the database holding your email address,
       account identifier, your relay access, the log of relayed calls,
-      failed-call diagnostics, and the list of headsets authorized for your
+      call diagnostics, and the list of headsets authorized for your
       account.</li>
   <li><strong>Phone Link Messages</strong> � the companion app holds the SMS
       permissions and relays messages through Phone Link. It has no account of
@@ -183,7 +186,7 @@
   stored on a server.
 </p>
 <p>
-  Failed-call diagnostics are stored in Supabase and are kept only for support,
+  Call diagnostics are stored in Supabase and are kept only for support,
   until you delete your account. Contact numbers are redacted before upload, and
   the diagnostic log contains no call audio, contacts, or message content.
 </p>
@@ -202,7 +205,7 @@
   Phone Link Messages has no account. Uninstalling it deletes the messages
   stored on that phone. Signing out clears the session on that phone but keeps
   your account. Deleting the account removes your email address, your account
-  identifier, your relay access, the log of relayed calls, failed-call
+  identifier, your relay access, the log of relayed calls, call
   diagnostics, and the list of headsets authorized for it.
 </p>
 
