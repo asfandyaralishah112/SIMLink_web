@@ -26,7 +26,7 @@
 <p class="lead">
   Phone Link — <code>com.LabNexus.phonelink</code><br>
   Phone Link Messages � <code>com.LabNexus.phonelink.companion</code><br>
-  Last updated: 28 October 2026
+  Last updated: 8 November 2026
 </p>
 
 <p>
@@ -54,17 +54,22 @@
   </tr>
   <tr>
     <td><strong>Your relay access</strong> — the plan on the account (for example one-time, yearly, monthly, or a trial), its expiry date if it has one, and how many trial calls it has used</td>
-    <td>Deciding whether relayed call audio is carried, and how much of a trial is left. It is set by us, never by the app</td>
+    <td>Deciding whether relayed call audio is carried, and how much of a trial is left. It is set by us; a first-use trial can be started automatically once per phone, and the app itself cannot grant or edit access</td>
+    <td>No</td>
+  </tr>
+  <tr>
+    <td><strong>A trial-eligibility record</strong> — a salted hash of your phone's Android ID (not the ID itself), and the account that first used it</td>
+    <td>Starting the automatic trial once per phone, and keeping the same phone from starting another trial under a different account. The hash cannot be reversed into your Android ID and is not used for advertising</td>
     <td>No</td>
   </tr>
   <tr>
     <td><strong>A log of relayed calls</strong> — when a relayed call happened, an identifier generated on your phone for that call, and whether it counted against a trial allowance</td>
-    <td>Billing and support: it is how the number of trial calls used is worked out, and how "why did my trial run out" can be answered. It deliberately contains <strong>no phone numbers</strong> and nothing about the other party</td>
+    <td>Trial accounting and support: it is how the number of trial calls used is worked out, and how "why did my trial run out" can be answered. It deliberately contains <strong>no phone numbers</strong> and nothing about the other party</td>
     <td>No</td>
   </tr>
   <tr>
     <td><strong>Call diagnostics</strong> when a relayed call runs: app version, Android version, device model, your plan and trial state, permissions, default-dialer and battery-optimisation state, call volume, the relay/Bluetooth state, and the app's own diagnostic log from <strong>both phones</strong> in the relay pair</td>
-    <td>Diagnosing and fixing relay failures. On a trial account it is uploaded for every relayed call, so a problem can be found before the trial ends; on a paid plan only for a call that recorded a failure. Contact numbers are replaced with <code>[redacted]</code> before the log is written or uploaded; there is no call audio, no contacts, and no message content</td>
+    <td>Diagnosing and fixing relay failures. On a trial account it is uploaded for every relayed call, so a problem can be found before the trial ends; on a non-trial plan only for a call that recorded a failure. Contact numbers are replaced with <code>[redacted]</code> before the log is written or uploaded; there is no call audio, no contacts, and no message content</td>
     <td>No</td>
   </tr>
   <tr>
@@ -84,7 +89,7 @@
   either.
 </p>
 <p>
-  Every relayed call on a trial account uploads a diagnostic log; on a paid plan
+  Every relayed call on a trial account uploads a diagnostic log; on a non-trial plan
   only a call that recorded a failure does. Both phones in the pair contribute
   their own log for that call, so a routing or audio problem can be seen from
   both ends. The log contains the app build, Android version, device model,
@@ -156,13 +161,10 @@
   <li><strong>Google</strong> — handles the sign-in itself. We receive your
       email address from it; we never see your Google password.</li>
   <li><strong>Supabase</strong> — hosts the database holding your email address,
-      account identifier, your relay access, the log of relayed calls,
-      call diagnostics, and the list of headsets authorized for your
-      account.</li>
-  <li><strong>Phone Link Messages</strong> � the companion app holds the SMS
-      permissions and relays messages through Phone Link. It has no account of
-      its own; the pairing and account are handled by Phone Link.</li>
-  <li><strong>Phone Link Messages</strong> · the companion app holds the SMS
+      account identifier, your relay access, the trial-eligibility record, the
+      log of relayed calls, call diagnostics, and the list of headsets authorized
+      for your account.</li>
+  <li><strong>Phone Link Messages</strong> — the companion app holds the SMS
       permissions and relays messages through Phone Link. It has no account of
       its own; the pairing and account are handled by Phone Link.</li>
   <li><strong>Google Play Integrity</strong> — when relay audio is switched on and
@@ -191,8 +193,9 @@
   the diagnostic log contains no call audio, contacts, or message content.
 </p>
 <p>
-  Your account is kept until you delete it. Deleting it removes the data
-  immediately.
+  Your account is kept until you delete it. Deleting it removes the account data
+  immediately; the trial-eligibility hash is kept without your email address,
+  only so the same phone cannot start another trial.
 </p>
 
 <h2>Deleting your data</h2>
@@ -206,7 +209,9 @@
   stored on that phone. Signing out clears the session on that phone but keeps
   your account. Deleting the account removes your email address, your account
   identifier, your relay access, the log of relayed calls, call
-  diagnostics, and the list of headsets authorized for it.
+  diagnostics, and the list of headsets authorized for it. The trial-eligibility
+  hash is kept without your email address so the same phone cannot start another
+  trial.
 </p>
 
 <h2>Children</h2>

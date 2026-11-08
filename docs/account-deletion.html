@@ -56,6 +56,18 @@
     <td>Deleted permanently, straight away</td>
   </tr>
   <tr>
+    <td>Your relay access (the plan on the account, its expiry date, and how many
+        trial calls it has used) and the log of relayed calls</td>
+    <td>Deleted permanently, straight away</td>
+  </tr>
+  <tr>
+    <td>The trial-eligibility record for this phone (a salted hash of its
+        Android ID)</td>
+    <td>Your email address is removed and cannot be linked back to you. The hash
+        itself is kept, without account data, so the same phone cannot start
+        another automatic trial.</td>
+  </tr>
+  <tr>
     <td>Call diagnostics</td>
     <td>Deleted permanently with the account</td>
   </tr>
@@ -79,7 +91,7 @@
   SIM relay stops working on every device signed in with that account, and the
   dialer keeps working normally. Deletion cannot be undone, but you can sign in
   again at any time to create a new account; its authorized headsets would need
-  to be set up again.
+  to be set up again. The automatic trial will not start again on the same phone.
 </p>
 
 <footer>
